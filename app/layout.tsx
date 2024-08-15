@@ -18,12 +18,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <TopBanner />
-        <div className="max-w-7xl mx-auto px-5">
-          <Header />
-          {children}
+    <html lang="en" className="h-full">
+      <body className={`h-full ${inter.className}`}>
+        <div className="min-h-screen flex flex-col">
+          <TopBanner />
+          <div className="flex-grow">
+            <div className="max-w-7xl mx-auto px-5">
+              <Header />
+              <div className="flex-grow">{children}</div>
+            </div>
+          </div>
           <Footer />
         </div>
       </body>

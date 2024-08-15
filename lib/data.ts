@@ -1,4 +1,4 @@
-const mainNav = [
+export const mainNav = [
   {
     name: "Cars",
     href: "/cars",

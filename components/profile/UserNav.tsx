@@ -3,7 +3,7 @@ import React from "react";
 
 export default function UserNav() {
   return (
-    <div className="h-[561px] w-[389px] border flex-center-col">
+    <div className="h-[561px] w-[389px] bg-[#161616]  flex-center-col rounded-lg">
       <Image
         className="rounded-full size-[189px] "
         src="/images/user_profile.jpg"
