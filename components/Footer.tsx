@@ -1,0 +1,14 @@
+import React from "react";
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <div className="flex  justify-between h-[56px] px-[32px] border mb-[48px] text-[#B1B3B3]">
+      <div className="flex items-end">
+        <span>{`© ${currentYear} Radical Motorsport`}</span>
+      </div>
+      <div className="flex items-end">social logos</div>
+    </div>
+  );
+}
