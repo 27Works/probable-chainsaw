@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import YellowButton from "../ui/YellowButton";
+import H1Gradient from "../ui/H1Gradient";
 
 const formSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
@@ -36,11 +37,16 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
   };
 
   return (
-    <div className="bg-[#161616] p-6 rounded-lg w-[779px]">
-      <h1 className="text-yellow-500 text-2xl font-bold mb-6">MY PROFILE</h1>
+    <div className="bg-[#161616] p-8 rounded-lg max-w-[779px] space-y-6 border-white/[0.03]">
+      {/* <h1 className="font-bold text-lg border inline-block">
+        <span className="bg-gradient-to-r from-[#F2CB13] to-[#E77003] text-transparent bg-clip-text">
+          MY PROFILE
+        </span>
+      </h1> */}
+      <H1Gradient>MY PROFILE</H1Gradient>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-2 gap-4"
+        className="grid grid-cols-2 gap-4 "
       >
         <div className="col-span-1">
           <label htmlFor="fullName" className="block text-white mb-1">
@@ -49,7 +55,7 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
           <input
             {...register("fullName")}
             id="fullName"
-            className={`w-full bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 ${
+            className={`w-full min-w-[345px] bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 ${
               errors.fullName ? "border-red-500" : ""
             }`}
           />
@@ -68,7 +74,7 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
             {...register("email")}
             id="email"
             type="email"
-            className={`w-full bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 ${
+            className={`w-full min-w-[345px] bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 ${
               errors.email ? "border-red-500" : ""
             }`}
           />
@@ -86,7 +92,7 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
           <select
             {...register("country")}
             id="country"
-            className="w-full bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 appearance-none"
+            className="w-full min-w-[345px] bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 appearance-none"
           >
             <option value="">Select a country</option>
             <option value="australia">Australia</option>
@@ -107,7 +113,7 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
           <select
             {...register("dealer")}
             id="dealer"
-            className="w-full bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 appearance-none"
+            className="w-full min-w-[345px] bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 appearance-none"
           >
             <option value="">Select a dealer</option>
             {dealers.map((dealer, index) => (
@@ -130,7 +136,7 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
           <select
             {...register("radicalModel")}
             id="radicalModel"
-            className="w-full bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 appearance-none"
+            className="w-full min-w-[345px] bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 appearance-none"
           >
             <option value="">Select a model</option>
             <option value="sr1">SR1</option>
@@ -151,7 +157,7 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
           <input
             {...register("purchaseYear")}
             id="purchaseYear"
-            className="w-full bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4"
+            className="w-full min-w-[345px] bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4"
           />
         </div>
 
@@ -162,7 +168,7 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
           <input
             {...register("chassisNumber")}
             id="chassisNumber"
-            className={`w-full bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 ${
+            className={`w-full min-w-[345px] bg-transparent text-white border border-gray-400 rounded-md h-[48px] py-[11px] px-4 ${
               errors.chassisNumber ? "border-red-500" : ""
             }`}
           />
@@ -173,10 +179,11 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
           )}
         </div>
 
-        <div className="col-span-2 mt-4">
-          <YellowButton type="submit">SAVE PROFILE</YellowButton>
-        </div>
+        <div className="col-span-2 mt-4"></div>
       </form>
+      <YellowButton className="text-[14px] font-bold" type="submit">
+        SAVE PROFILE
+      </YellowButton>
     </div>
   );
 }

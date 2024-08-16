@@ -25,7 +25,7 @@ export default async function ProfilePage() {
   console.log("dealers ===>>>", dealers);
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between">
+    <div className="flex-center-col xl:flex-row mt-[163px] gap-12">
       <UserNav />
       <UserForm dealers={dealers} />
     </div>
