@@ -24,7 +24,7 @@ export default function RootLayout({
           {/* <TopBanner /> */}
           <div className="flex-grow">
             <div className="">
-              <div className="backdrop-blur-md sticky top-0 ">
+              <div className="backdrop-blur-md sticky top-0 z-50 ">
                 <Header />
               </div>
 
