@@ -13,7 +13,7 @@ export const mainNav = [
   },
   {
     name: "News",
-    href: "/news",
+    href: "/posts",
   },
   {
     name: "Contact us",

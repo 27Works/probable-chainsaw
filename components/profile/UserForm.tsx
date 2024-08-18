@@ -32,20 +32,23 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
   });
 
   const onSubmit = (data: FormData) => {
-    alert("onSubmit");
+    alert("Form submitted successfully");
     console.log("submit data =====>>>>", data);
   };
 
   const inputClass =
-    "w-full bg-[#161616] text-white border border-gray-700 rounded-md h-[48px] py-[11px] px-4";
+    "w-full bg-[#161616] text-white border border-gray-700 rounded-md h-[48px] py-[11px] px-4 text-[18px]";
+
+  const labelClass =
+    "flex items-center justify-between text-white mb-1 text-[16px]";
 
   return (
     <div className="bg-[#161616] p-8 rounded-lg w-full max-w-[779px] space-y-6 border-white/[0.03]">
       <H1Gradient>MY PROFILE</H1Gradient>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="fullName" className="block text-white mb-1">
+            <label htmlFor="fullName" className={labelClass}>
               Full name
             </label>
             <input
@@ -53,10 +56,15 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
               id="fullName"
               className={inputClass}
             />
+            {errors.fullName && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.fullName.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-white mb-1">
+            <label htmlFor="email" className={labelClass}>
               Email
             </label>
             <input
@@ -65,10 +73,15 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
               type="email"
               className={inputClass}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="country" className="block text-white mb-1">
+            <label htmlFor="country" className={labelClass}>
               Country
             </label>
             <select
@@ -81,10 +94,15 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
               <option value="united-kingdom">United Kingdom</option>
               <option value="canada">Canada</option>
             </select>
+            {errors.country && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.country.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="dealer" className="block text-white mb-1">
+            <label htmlFor="dealer" className={labelClass}>
               Dealer
             </label>
             <select
@@ -99,11 +117,16 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
                 </option>
               ))}
             </select>
+            {errors.dealer && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.dealer.message}
+              </p>
+            )}
           </div>
         </div>
 
         <div>
-          <label htmlFor="radicalModel" className="block text-white mb-1">
+          <label htmlFor="radicalModel" className={labelClass}>
             Which Radical do you own?
           </label>
           <select
@@ -116,37 +139,55 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
             <option value="sr3">SR3</option>
             <option value="sr10">SR10</option>
           </select>
+          {errors.radicalModel && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.radicalModel.message}
+            </p>
+          )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="purchaseYear" className="block text-white mb-1">
+            <label htmlFor="purchaseYear" className={labelClass}>
               Year of purchase
-              <span className="text-gray-500 text-sm ml-2">Optional</span>
+              <span className="text-[12px] text-[#B1B3B3]">Optional</span>
             </label>
             <input
               {...register("purchaseYear")}
               id="purchaseYear"
               className={inputClass}
             />
+            {errors.purchaseYear && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.purchaseYear.message}
+              </p>
+            )}
           </div>
 
           <div>
-            <label htmlFor="chassisNumber" className="block text-white mb-1">
+            <label htmlFor="chassisNumber" className={labelClass}>
               Chassis number
-              <span className="text-gray-500 text-sm ml-2">Optional</span>
+              <span className="text-[12px] text-[#B1B3B3]">Optional</span>
             </label>
             <input
               {...register("chassisNumber")}
               id="chassisNumber"
               className={inputClass}
             />
+            {errors.chassisNumber && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.chassisNumber.message}
+              </p>
+            )}
           </div>
         </div>
+        <YellowButton
+          className="text-[14px] font-futura-bold px-6 py-3"
+          type="submit"
+        >
+          SAVE PROFILE
+        </YellowButton>
       </form>
-      <YellowButton className="text-[14px] font-bold px-6 py-3" type="submit">
-        SAVE PROFILE
-      </YellowButton>
     </div>
   );
 }

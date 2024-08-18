@@ -32,17 +32,19 @@ export default function UserNav() {
       </div>
 
       <div className="w-full bg-[#161616] flex flex-col items-center rounded-lg border-white-opacity-100 border border-white/[0.03] pt-24 pb-6">
-        <H1Gradient className="text-[24px] font-bold mb-1 text-center">
+        <H1Gradient className="font-futura-bold text-[24px] font-bold mb-1 text-center">
           JOSEPHINE ROBINSON
         </H1Gradient>
-        <p className="text-gray-400 mb-1 text-center">Radical since 2020</p>
-        <p className="text-yellow-500 text-sm mb-6 cursor-pointer flex items-center justify-center">
+        <p className="text-gray-400 mb-1 text-center text-[16px]">
+          Radical since 2020
+        </p>
+        <p className="text-yellow-500 text-sm mb-6 cursor-pointer flex items-center justify-center text-[14px]">
           <Edit2 size={14} className="mr-1" /> Edit profile
         </p>
 
         <div className="w-full px-6 space-y-3">
           <YellowButton className="w-full justify-between">
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center text-[14px] font-futura-bold">
               <User size={18} strokeWidth={3} />
               MY PROFILE
             </div>

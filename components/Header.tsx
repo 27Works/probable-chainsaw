@@ -14,7 +14,7 @@ export default function Header() {
   const isProfilePage = path.includes("profile");
 
   return (
-    <header className="mx-auto max-w-7xl sticky -top-1 flex justify-between items-center h-[64px] px-4 md:px-5 pt-[24px]">
+    <header className="mx-auto max-w-7xl sticky -top-1 flex justify-between items-center h-[64px] px-4 pt-[24px] font-futura-medium">
       <div className="flex-shrink-0">
         <Link href="/">
           <Image
@@ -26,8 +26,8 @@ export default function Header() {
         </Link>
       </div>
       <div className="flex items-center">
-        <nav className="pr-2 md:pr-6">
-          <div className="md:hidden flex items-center gap-4">
+        <nav className="pr-2 lg:pr-6">
+          <div className="lg:hidden flex items-center gap-4">
             <Menu />
             <Link href="/profile">
               <User
@@ -36,7 +36,7 @@ export default function Header() {
               />
             </Link>
           </div>
-          <ul className="hidden md:flex gap-4">
+          <ul className="hidden lg:flex gap-4 text-[16px]">
             {mainNav.map((item) => (
               <li key={item.name}>
                 <Link
@@ -53,7 +53,7 @@ export default function Header() {
           </ul>
         </nav>
         <div
-          className={`hidden md:flex items-center gap-2 ${
+          className={`hidden lg:flex items-center gap-2 ${
             isProfilePage ? "pl-6 border-l border-[#B1B3B3]" : "pl-2"
           }`}
         >
@@ -66,7 +66,7 @@ export default function Header() {
                 <User size={20} className="mr-2" />
                 Josephine
               </Link>
-              <Bell size={22} className="text-white ml-2" />
+              <Bell fill="white" size={22} className="text-white ml-2" />
             </>
           ) : (
             <Link href="/profile">
