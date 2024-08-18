@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -13,7 +13,11 @@ const formSchema = z.object({
   country: z.string().min(1, "Country is required"),
   dealer: z.string().min(1, "Dealer is required"),
   radicalModel: z.string().min(1, "Radical model is required"),
-  purchaseYear: z.string().optional(),
+  purchaseYear: z
+    .string()
+    .regex(/^\d*$/, "Purchase year must contain only numbers")
+    .max(4, "Year must be between 1900 and 2024")
+    .optional(),
   chassisNumber: z
     .string()
     .regex(/^\d*$/, "Chassis number must contain only numbers")
@@ -23,6 +27,8 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function UserForm({ dealers }: { dealers: string[] }) {
+  const [userObj, setUserObj] = useState<FormData | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -32,8 +38,9 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
   });
 
   const onSubmit = (data: FormData) => {
-    alert("Form submitted successfully");
-    console.log("submit data =====>>>>", data);
+    // alert("Form submitted successfully");
+    // console.log("submit data =====>>>>", data);
+    setUserObj(data);
   };
 
   const inputClass =
@@ -43,9 +50,21 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
     "flex items-center justify-between text-white mb-1 text-[16px]";
 
   return (
-    <div className="bg-[#161616] p-8 rounded-lg w-full max-w-[779px] space-y-6 border-white/[0.03]">
+    <div className="bg-[#161616] p-8 rounded-lg w-full max-w-[779px] space-y-6 border-white/[0.03] mb-8">
       <H1Gradient>MY PROFILE</H1Gradient>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      {userObj && (
+        <ul>
+          {Object.entries(userObj).map(
+            ([key, value]) =>
+              value && (
+                <li key={key} className="font-futura-bold">
+                  {key}: <span className="font-futura-light">{value}</span>
+                </li>
+              )
+          )}
+        </ul>
+      )}
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 ">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <label htmlFor="fullName" className={labelClass}>
@@ -181,12 +200,14 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
             )}
           </div>
         </div>
-        <YellowButton
-          className="text-[14px] font-futura-bold px-6 py-3"
-          type="submit"
-        >
-          SAVE PROFILE
-        </YellowButton>
+        <div className="pt-4">
+          <YellowButton
+            className="text-[14px] font-futura-bold px-6 py-3 "
+            type="submit"
+          >
+            SAVE PROFILE
+          </YellowButton>
+        </div>
       </form>
     </div>
   );
