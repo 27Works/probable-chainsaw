@@ -126,7 +126,7 @@ export default async function PostsSlugPage({
               return (
                 <section
                   key={index}
-                  className="max-w-[680px] text-[18px] font-futura-book text-[#B1B3B3]"
+                  className="max-w-[680px] text-[18px] font-futura-book text-[#B1B3B3] space-y-7"
                 >
                   {parse(section.content || "")}
                 </section>
