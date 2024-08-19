@@ -1,5 +1,4 @@
 import { Post } from "@/lib/types";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -8,6 +7,9 @@ export default async function PostsPage() {
   const response = await fetch(`https://caruuto.27.works/api/v1/posts/`, {
     headers: {
       Authorization: `Api-key-v1 ${process.env.APIKEY}`,
+    },
+    next: {
+      revalidate: 300,
     },
   });
 

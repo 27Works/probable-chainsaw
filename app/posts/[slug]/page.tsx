@@ -20,6 +20,10 @@ export default async function PostsSlugPage({
       headers: {
         Authorization: `Api-key-v1 ${process.env.APIKEY}`,
       },
+
+      next: {
+        revalidate: 300,
+      },
     }
   );
 
