@@ -12,7 +12,7 @@ export default function H1Gradient({
     <h1 className=" inline-block">
       <span
         className={cn(
-          " font-bold text-lg bg-gradient-to-r from-[#F2CB13] to-[#E77003] text-transparent bg-clip-text",
+          "font-futura-bold text-lg bg-gradient-to-r from-[#F2CB13] to-[#E77003] text-transparent bg-clip-text",
           className
         )}
       >

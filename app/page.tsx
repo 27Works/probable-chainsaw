@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
   return (
-    <main className="flex-center-col h-screen">
+    <main className="flex-center-col min-h-[80dvh]">
       <p>
         Please head over to the
         <Link className="underline text-[#F2CB13]" href="/posts">

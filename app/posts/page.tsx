@@ -1,3 +1,4 @@
+import { Post } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -20,7 +21,7 @@ export default async function PostsPage() {
     notFound();
   }
 
-  const slugs = data.results.map((post: any) => {
+  const slugs = data.results.map((post: Post) => {
     return post.slug;
   });
 

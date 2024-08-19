@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import parse from "html-react-parser";
 import { Bookmark, Share2 } from "lucide-react";
+import AlsoLike from "@/components/AlsoLike";
 
 export default async function PostsSlugPage({
   params,
@@ -62,7 +63,7 @@ export default async function PostsSlugPage({
         <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-black to-transparent"></div>
       </div>
 
-      <div className="relative max-w-[820px] mx-auto -mt-64 text-white px-4 space-y-7">
+      <div className="relative max-w-[820px] mx-auto -mt-48 text-white px-4 space-y-7 pb-20">
         {/* top section, home, latest, title summary */}
         <section className="max-w-[715px] ">
           <p className=" text-[#F2CB13] font-futura-book text-[14px]">
@@ -85,7 +86,6 @@ export default async function PostsSlugPage({
             </p>
           )}
         </section>
-        <div></div>
         {/* avatar, name, date, 2 icons */}
         <section className="flex items-center justify-between max-w-[680px] ">
           <div className="flex items-center">
@@ -151,6 +151,10 @@ export default async function PostsSlugPage({
               return null;
           }
         })}
+      </div>
+      <hr className="border-white/20 max-w-7xl mx-auto" />
+      <div className="px-4 md:ml-[100px]  pt-20 ">
+        <AlsoLike />
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -23,7 +22,7 @@ export default function RootLayout({
           {/* <TopBanner /> */}
           <div className="flex-grow">
             <div className="">
-              <div className="backdrop-blur-md sticky top-0 z-50 ">
+              <div className="sticky top-0 z-50 backdrop-blur-md bg-gradient-to-b from-black/70 to-black/30">
                 <Header />
               </div>
 

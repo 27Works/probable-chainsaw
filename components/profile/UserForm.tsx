@@ -57,7 +57,7 @@ export default function UserForm({ dealers }: { dealers: string[] }) {
           {Object.entries(userObj).map(
             ([key, value]) =>
               value && (
-                <li key={key} className="font-futura-bold">
+                <li key={key} className="font-futura-bold list-disc ml-5">
                   {key}: <span className="font-futura-light">{value}</span>
                 </li>
               )
