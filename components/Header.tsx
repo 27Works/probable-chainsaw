@@ -1,0 +1,80 @@
+"use client";
+
+import { mainNav } from "@/lib/data";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { Bell, Menu, User } from "lucide-react";
+import { usePathname } from "next/navigation";
+import YellowButton from "./ui/YellowButton";
+import { cn } from "@/lib/utils";
+
+export default function Header() {
+  const path = usePathname();
+  const isProfilePage = path.includes("profile");
+
+  return (
+    <header className="mx-auto max-w-7xl sticky -top-1 flex justify-between items-center h-[64px] px-4 pt-[24px] font-futura-medium">
+      <div className="flex-shrink-0">
+        <Link href="/">
+          <Image
+            src="/images/radical_motorsport.svg"
+            alt="logo"
+            width={194}
+            height={40}
+          />
+        </Link>
+      </div>
+      <div className="flex items-center">
+        <nav className="pr-2 lg:pr-6">
+          <div className="lg:hidden flex items-center gap-4">
+            <Menu />
+            <Link href="/profile">
+              <User
+                size={20}
+                className={isProfilePage ? "text-[#F2CB13]" : "text-white"}
+              />
+            </Link>
+          </div>
+          <ul className="hidden lg:flex gap-4 text-[16px]">
+            {mainNav.map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  className={cn(
+                    "text-white",
+                    path.includes(item.href) && "text-[#F2CB13]"
+                  )}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div
+          className={`hidden lg:flex items-center gap-2 ${
+            isProfilePage ? "pl-6 border-l border-[#B1B3B3]" : "pl-2"
+          }`}
+        >
+          {isProfilePage ? (
+            <>
+              <Link
+                href="/profile"
+                className="flex text-[#F2CB13] items-center"
+              >
+                <User size={20} className="mr-2" />
+                Josephine
+              </Link>
+              <Bell fill="white" size={22} className="text-white ml-2" />
+            </>
+          ) : (
+            <Link href="/profile">
+              <YellowButton className="max-h-[34px]">MY RADICAL</YellowButton>
+            </Link>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+}
